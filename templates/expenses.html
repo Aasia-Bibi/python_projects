@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Expenses</title>
+</head>
+<body>
+    <h1>Your Expenses</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.name }}</td>
+            <td>${{ expense.amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Total Spent: ${{ total_spent }}</h2>
+    <h2>Remaining Budget: ${{ remaining_budget }}</h2>
+    <h3>Add New Expense</h3>
+    <form method="POST" action="/add_expense">
+        <input type="text" name="name" placeholder="Expense Name" required>
+        <input type="number" step="0.01" name="amount" placeholder="Expense Amount" required>
+        <button type="submit">Add Expense</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>
